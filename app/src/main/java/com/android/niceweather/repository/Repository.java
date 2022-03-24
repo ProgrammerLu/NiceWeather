@@ -2,9 +2,10 @@ package com.android.niceweather.repository;
 
 import com.android.niceweather.logic.dao.PlaceDao;
 import com.android.niceweather.logic.dataModel.placeModel.Place;
-import com.android.niceweather.logic.dataModel.placeModel.PlaceResponse;
 import com.android.niceweather.logic.dataModel.weatherModel.Weather;
 import com.android.niceweather.logic.isolation.HttpHelper;
+
+import java.util.List;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -27,7 +28,7 @@ public class Repository {
     private Repository(){ }
 
 
-    public void searchPlace(String query, Action1<PlaceResponse> action1) {
+    public void searchPlace(String query, Action1<List<Place>> action1) {
         httpHelper.searchPlace(query, action1);
     }
 
@@ -50,16 +51,6 @@ public class Repository {
             public void call(Subscriber<? super Place> subscriber) {
                 Place place = placeDao.getSavedPlace();
                 subscriber.onNext(place);
-            }
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(action1);
-    }
-
-    public void isSavedPlace(Action1<Boolean> action1) {
-        Observable.create(new Observable.OnSubscribe<Boolean>() {
-            @Override
-            public void call(Subscriber<? super Boolean> subscriber) {
-                Boolean isSavedPlace = placeDao.isSavedPlace();
-                subscriber.onNext(isSavedPlace);
             }
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(action1);
     }

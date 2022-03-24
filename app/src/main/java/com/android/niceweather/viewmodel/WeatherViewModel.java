@@ -1,12 +1,9 @@
 package com.android.niceweather.viewmodel;
 
-import android.content.Intent;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-
 import com.android.niceweather.logic.dataModel.weatherModel.Weather;
 import com.android.niceweather.repository.Repository;
-
 import rx.functions.Action1;
 
 public class WeatherViewModel extends ViewModel {

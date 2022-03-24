@@ -1,5 +1,6 @@
 package com.android.niceweather;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
 
@@ -8,8 +9,13 @@ import com.android.niceweather.logic.retrofitRequest.RetrofitRequest;
 
 public class WeatherApplication extends Application {
     public static final String BASE_URL = "https://api.caiyunapp.com/";
-    private static Context context;
     public static final String TOKEN = "AA0bhJZP0SGvGkTj";
+    @SuppressLint("StaticFieldLeak")
+    private static Context context;
+
+    public static Context getContext() {
+       return context;
+    }
 
     @Override
     public void onCreate() {
@@ -22,7 +28,4 @@ public class WeatherApplication extends Application {
         HttpHelper.init(new RetrofitRequest());
     }
 
-    public static Context getContext() {
-        return context;
-    }
 }

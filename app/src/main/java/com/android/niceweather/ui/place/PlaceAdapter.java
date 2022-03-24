@@ -7,14 +7,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import com.android.niceweather.R;
 import com.android.niceweather.logic.dataModel.placeModel.Place;
-import com.android.niceweather.repository.Repository;
 import com.android.niceweather.ui.weather.WeatherActivity;
-
 import java.util.List;
 
 public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.ViewHolder>{

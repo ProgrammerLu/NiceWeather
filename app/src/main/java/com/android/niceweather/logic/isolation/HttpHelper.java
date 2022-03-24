@@ -1,7 +1,9 @@
 package com.android.niceweather.logic.isolation;
 
-import com.android.niceweather.logic.dataModel.placeModel.PlaceResponse;
+import com.android.niceweather.logic.dataModel.placeModel.Place;
 import com.android.niceweather.logic.dataModel.weatherModel.Weather;
+
+import java.util.List;
 
 import rx.functions.Action1;
 
@@ -23,7 +25,7 @@ public class HttpHelper implements IHttpRequest{
     }
 
     @Override
-    public void searchPlace(String query, Action1<PlaceResponse> action1) {
+    public void searchPlace(String query, Action1<List<Place>> action1) {
         mHttpRequest.searchPlace(query, action1);
     }
 

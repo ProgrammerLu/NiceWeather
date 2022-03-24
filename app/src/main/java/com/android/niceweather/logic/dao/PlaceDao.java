@@ -30,13 +30,12 @@ public class PlaceDao {
     }
 
     public Place getSavedPlace() {
-        String place = getSharedPreferences().getString("place", "");
-        return new Gson().fromJson(place, Place.class);
+        if(getSharedPreferences().contains("place")) {
+            String place = getSharedPreferences().getString("place", "");
+            return new Gson().fromJson(place, Place.class);
+        } else {
+            return null;
+        }
     }
-
-    public boolean isSavedPlace() {
-        return getSharedPreferences().contains("place");
-    }
-
 
 }
